@@ -26,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,6 +50,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -56,12 +58,9 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -105,6 +104,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -224,6 +224,7 @@
     <Content Include="assets\css\color-4.css" />
     <Content Include="assets\css\color-5.css" />
     <Content Include="assets\css\color-6.css" />
+    <Content Include="assets\css\mycss.css" />
     <Content Include="assets\css\responsive.css" />
     <Content Include="assets\css\style.css" />
     <Content Include="assets\css\vendors\animate.css" />
@@ -941,6 +942,8 @@
     <Content Include="assets\images\general-widget\testimonial.png" />
     <Content Include="assets\images\general-widget\user-profile.png" />
     <Content Include="assets\images\hour.svg" />
+    <Content Include="assets\images\icons\help-circle.png" />
+    <Content Include="assets\images\icons\message-square.png" />
     <Content Include="assets\images\job-search\1.jpg" />
     <Content Include="assets\images\job-search\2.jpg" />
     <Content Include="assets\images\job-search\3.jpg" />
@@ -2754,8 +2757,12 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\About.cshtml">
+      <BrowseToURL>~/Home/About</BrowseToURL>
+    </Content>
+    <Content Include="Views\Home\Contact.cshtml">
+      <BrowseToURL>~/Home/Contact</BrowseToURL>
+    </Content>
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -2777,6 +2784,13 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\newInvoice.cshtml">
+      <BrowseToURL>~/Home/newInvoice</BrowseToURL>
+    </Content>
+    <Content Include="Views\Home\reports.cshtml" />
+    <Content Include="Views\Home\suppliers.cshtml" />
+    <Content Include="Views\Home\accounts.cshtml" />
+    <Content Include="Views\Home\searchInvoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
