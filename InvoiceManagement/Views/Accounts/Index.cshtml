@@ -1,49 +1,64 @@
-﻿@model IEnumerable<InvoiceManagement.Models.Account>
-
-@{
+﻿@{
     Layout = null;
 }
 
-<!DOCTYPE html>
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header pb-0">
+            <h4>Cuentas</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive theme-scrollbar">
+                <table class="display" id="TableAccounts">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Descripción</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @*@Html.ActionLink("Create New", "Create")*@
-        <a href="#" onclick="GetView('@Url.Action("Edit", "Accounts")', 'main-container')">Create new</a>
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Codigo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Codigo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |*@
-                <a class="" onclick="GetView('@Url.Action("Edit", "Accounts", new {id = item.Id})', 'main-container')">Edit</a>
-                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-            </td>
-        </tr>
-    }
-    
-    </table>
-</body>
-</html>
+<script>
+    var tableAccounts = $("#TableAccounts").DataTable({
+        dom:
+            "<'row'<'col-sm-12 col-md-6'><'col-sm-12 col-md-6'f>>" +
+            "<'row'<'col-sm-12'tr>>" +
+            "<'row'<'col-sm-12 col-md-5'l><'col-sm-12 col-md-7'p>>",
+        "bServerSide": true,
+        "bProcessing": true,
+        "bSearchable": true,
+        responsive: true,
+        async: false,
+        cache: false,
+        "sAjaxSource": "Accounts/GetList",
+        "columns": [
+            {
+                "data": "Codigo",
+            },
+            {
+                "data": "Descripcion",
+            },
+            {
+                "data": "Id",
+                width: "1%",
+                render: function (data, type, row) {
+                    return `<div class="btn-group">
+                        <button class="btn btn-primary btn-sm" onclick="GetView('Accounts/Edit?id=' + `+ data + `, 'main-container')"><i class="fa fa-pencil"></i></button>
+                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                      </div>`;
+                }
+            },
+        ],
+    });
+
+    $('#TableAccounts tbody').on('dblclick', 'tr', function () {
+        var data = tableAccounts.row(this).data();
+        GetView('Accounts/Edit?id=' + data.Id, 'main-container')
+    });
+</script>

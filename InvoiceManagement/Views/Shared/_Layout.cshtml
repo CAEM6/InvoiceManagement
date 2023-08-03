@@ -24,11 +24,12 @@
     <!-- Feather icon-->
     <link rel="stylesheet" type="text/css" href="~/assets/css/vendors/feather-icon.css">
     <link rel="stylesheet" type="text/css" href="~/assets/css/vendors/scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/vendors/sweetalert2.css">
     <link rel="stylesheet" type="text/css" href="~/assets/css/vendors/animate.css">
     <link rel="stylesheet" type="text/css" href="~/assets/css/vendors/chartist.css">
     <link rel="stylesheet" type="text/css" href="~/assets/css/vendors/prism.css">
     <link rel="stylesheet" type="text/css" href="~/assets/css/vendors/vector-map.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/datatables.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/vendors/datatables.css">
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="~/assets/css/vendors/bootstrap.css">
     <!-- App css-->
@@ -218,7 +219,7 @@
                                 <li class="sidebar-list">
                                     <i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="users"></i><span>Accounts</span></a>
                                     <ul class="sidebar-submenu">
-                                        <li><a href="#" onclick="GetView('@Url.Action("Create","Accounts")','main-container')">&nbsp New Account</a></li>
+                                        <li><a href="#" onclick="GetView('@Url.Action("Edit","Accounts")','main-container')">&nbsp New Account</a></li>
                                         <li><a href="#" onclick="GetView('@Url.Action("Index","Accounts")','main-container')">&nbsp Search</a></li>
                                     </ul>
                                 </li>
@@ -258,7 +259,7 @@
                             </div>
                         </div>
                     </div>*@
-                <div class="container-fluid dashboard-default" id="main-container">
+                <div class="container-fluid" id="main-container">
                     @RenderBody()
                 </div>
             </div>
@@ -290,22 +291,12 @@
     <!-- Sidebar jquery-->
     <script src="~/assets/js/config.js"></script>
     <script src="~/assets/js/sidebar-menu.js"></script>
-    <script src="~/assets/js/chart/chartist/chartist.js"></script>
-    <script src="~/assets/js/chart/chartist/chartist-plugin-tooltip.js"></script>
-    <script src="~/assets/js/chart/apex-chart/apex-chart.js"></script>
-    <script src="~/assets/js/chart/apex-chart/stock-prices.js"></script>
+    <script src="~/assets/js/sweet-alert/sweetalert.min.js"></script>
     <script src="~/assets/js/prism/prism.min.js"></script>
     <script src="~/assets/js/clipboard/clipboard.min.js"></script>
     <script src="~/assets/js/custom-card/custom-card.js"></script>
     <script src="~/assets/js/notify/bootstrap-notify.min.js"></script>
     <script src="~/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="~/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="~/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
-    <script src="~/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
-    <script src="~/assets/js/vector-map/map/jquery-jvectormap-au-mill.js"></script>
-    <script src="~/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js"></script>
-    <script src="~/assets/js/vector-map/map/jquery-jvectormap-in-mill.js"></script>
-    <script src="~/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
     <script src="~/assets/js/dashboard/default.js"></script>
     <script src="~/assets/js/notify/index.js"></script>
     <script src="~/assets/js/typeahead/handlebars.js"></script>
@@ -313,24 +304,14 @@
     <script src="~/assets/js/typeahead/typeahead.custom.js"></script>
     <script src="~/assets/js/typeahead-search/handlebars.js"></script>
     <script src="~/assets/js/typeahead-search/typeahead-custom.js"></script>
-    <script src="../assets/js/datatable/datatables/datatable.custom.js"></script>
+    <script src="~/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
     <!-- Template js-->
     <script src="~/assets/js/script.js"></script>
     <script src="~/assets/js/theme-customizer/customizer.js"></script>
-
-
+    <script src="~/Scripts/site.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <script>
-        function GetView(url, content) {
-            $.ajax({
-                type: "GET",
-                cache: false,
-                url: url,
-            }).done(function (data) {
-                $('#' + content).html(data).ready();
-            }).fail(function () {
 
-            });
-        }
     </script>
     <!-- login js-->
 </body>

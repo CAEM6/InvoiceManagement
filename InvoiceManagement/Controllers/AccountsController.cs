@@ -1,7 +1,10 @@
 ﻿using InvoiceManagement.Models;
+using InvoiceManagement.Utils;
+using System;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 using System.Linq;
-using System.Net;
 using System.Web.Mvc;
 
 namespace InvoiceManagement.Controllers
@@ -10,51 +13,11 @@ namespace InvoiceManagement.Controllers
     {
         private InvoiceManagementEntities db = new InvoiceManagementEntities();
 
-        // GET: Accounts
         public ActionResult Index()
-        {
-            return View(db.Accounts.ToList()); ;
-        }
-
-        // GET: Accounts/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return View(new Account());
-            }
-            Account account = db.Accounts.Find(id);
-            if (account == null)
-            {
-                return View(new Account());
-            }
-            return View(account);
-        }
-
-        // GET: Accounts/Create
-        public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Accounts/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Codigo,Descripcion")] Account account)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Accounts.Add(account);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(account);
-        }
-
-        // GET: Accounts/Edit/5
         public ActionResult Edit(int? id)
         {
             var modelInDb = db.Accounts.Find(id);
@@ -66,53 +29,152 @@ namespace InvoiceManagement.Controllers
             return View(modelInDb);
         }
 
-        // POST: Accounts/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Codigo,Descripcion")] Account account)
         {
-            if (ModelState.IsValid)
+            Response response = new Response();
+
+            try
             {
-                if (account.Id == 0)
+                if (db.Accounts.FirstOrDefault(x => x.Codigo == account.Codigo && x.Id != account.Id) != null)
                 {
-                    db.Accounts.Add(account);
+                    response.Error = true;
+                    response.Messages.Add($"El codigo {account.Codigo} ya se encuentra registrado en el sistema");
                 }
-                else 
+
+                if (response.Error == false)
                 {
-                    db.Entry(account).State = EntityState.Modified;
-                }                
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    if (account.Id == 0)
+                        db.Accounts.Add(account);
+                    else
+                        db.Entry(account).State = EntityState.Modified;
+
+                    db.SaveChanges();
+                    response.Messages.Add($"Guardado con éxito");
+                }
             }
-            return View(account);
+            catch (DbEntityValidationException ex)
+            {
+                ExceptionHandler.ResolveException(ex, ref response);
+            }
+            catch (DbUpdateException ex)
+            {
+                ExceptionHandler.ResolveException(ex, ref response);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.ResolveException(ex, ref response);
+            }
+
+            dynamic success = new
+            {
+                error = response.Error,
+                message = String.Join(",", response.Messages),
+                id = account.Id,
+            };
+
+            return Json(success, JsonRequestBehavior.AllowGet);
         }
 
-        // GET: Accounts/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Account account = db.Accounts.Find(id);
-            if (account == null)
-            {
-                return HttpNotFound();
-            }
-            return View(account);
-        }
-
-        // POST: Accounts/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Delete([Bind(Include = "Id")] Account account)
         {
-            Account account = db.Accounts.Find(id);
-            db.Accounts.Remove(account);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            Response response = new Response();
+
+            try
+            {
+                if (db.Accounts.FirstOrDefault(x => x.Id == account.Id) == null)
+                {
+                    response.Error = true;
+                    response.Messages.Add($"El codigo {account.Codigo} no se encuentra registrado en el sistema");
+                }
+
+                if (db.Suppliers.Any(x => x.AccountId == account.Id))
+                {
+                    response.Error = true;
+                    response.Messages.Add($"No se puede eliminar esta cuenta ya que se encuentra en uso");
+                }
+
+                if (response.Error == false)
+                {
+                    db.Accounts.Remove(account);
+                    db.SaveChanges();
+                    response.Messages.Add($"Eliminado con éxito");
+                }
+            }
+            catch (DbEntityValidationException ex)
+            {
+                ExceptionHandler.ResolveException(ex, ref response);
+            }
+            catch (DbUpdateException ex)
+            {
+                ExceptionHandler.ResolveException(ex, ref response);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.ResolveException(ex, ref response);
+            }
+
+            dynamic success = new
+            {
+                error = response.Error,
+                message = String.Join(",", response.Messages),
+                id = response.Error is false ? GetLastId() : account.Id,
+            };
+
+            return Json(success, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetList(JqueryDataTableParam param)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var listado = db.Accounts.AsEnumerable();
+
+            listado.ToList();
+
+            if (!string.IsNullOrEmpty(param.sSearch))
+            {
+                listado = listado.Where(x => x.Codigo.ToLower().Contains(param.sSearch.ToLower())
+                                              || x.Descripcion.ToString().Contains(param.sSearch.ToLower())).ToList();
+            }
+
+            var sortColumnIndex = Convert.ToInt32(HttpContext.Request.QueryString["iSortCol_0"]);
+            var sortDirection = HttpContext.Request.QueryString["sSortDir_0"];
+
+            switch (sortColumnIndex)
+            {
+                case 0:
+                    listado = sortDirection == "asc" ? listado.OrderBy(c => c.Codigo).ThenBy(x => x.Id) : listado.OrderByDescending(c => c.Codigo).ThenByDescending(x => x.Id);
+                    break;
+                case 1:
+                    listado = sortDirection == "asc" ? listado.OrderBy(c => c.Descripcion).ThenBy(x => x.Id) : listado.OrderByDescending(c => c.Descripcion).ThenByDescending(x => x.Id);
+                    break;
+                default:
+                    listado = listado.OrderByDescending(c => c.Id);
+                    break;
+            }
+
+            var displayResult = listado.Skip(param.iDisplayStart)
+                .Take(param.iDisplayLength).ToList();
+            var totalRecords = listado.Count();
+
+            return Json(new
+            {
+                param.sEcho,
+                iTotalRecords = totalRecords,
+                iTotalDisplayRecords = totalRecords,
+                aaData = displayResult
+            }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        // TODO: cambiar ese metodo para hacerlo de manera global con los demas catalogos, aun no se va a usar
+        private int GetLastId()
+        {
+            var lastIdInDb = db.Accounts.Select(x => x.Id).OrderByDescending(x => x).FirstOrDefault();
+            return lastIdInDb;
         }
 
         protected override void Dispose(bool disposing)
