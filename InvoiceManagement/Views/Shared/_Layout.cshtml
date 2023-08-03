@@ -76,7 +76,7 @@
                                 <span class="f-w-600">Dashboard</span><span><i class="middle" data-feather="chevron-down"></i></span>
                                 <ul class="onhover-show-div left-dropdown">
                                     <li> <a href="index.html">Default</a></li>
-                                    <li> <a href="dashboard-02.html"> Ecommerce</a></li>
+                                    <li> <a href="#" onclick="GetView('@Url.Action("Index", "Accounts")', 'main-container')"> Ecommerce</a></li>
                                 </ul>
                             </li>
                             <li class="onhover-dropdown">
@@ -346,7 +346,7 @@
                                     <i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="home"></i><span class="lan-3">Dashboard</span></a>
                                     <ul class="sidebar-submenu">
                                         <li><a class="lan-4" href="index.html">Default</a></li>
-                                        <li><a class="lan-5" href="dashboard-02.html">Ecommerce</a></li>
+                                        <li><a class="lan-5" href="#" onclick="GetView('@Url.Action("Index", "Accounts")', 'main-container')">Ecommerce</a></li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-list">
@@ -792,6 +792,20 @@
     <!-- Template js-->
     <script src="~/assets/js/script.js"></script>
     <script src="~/assets/js/theme-customizer/customizer.js"></script>
+    <script>
+        function GetView(url, content)
+        {
+            $.ajax({
+                type: "GET",
+                cache: false,
+                url: url,
+            }).done(function (data) {
+                    $('#' + content).html(data).ready();
+            }).fail(function () {
+
+            });
+        }
+    </script>
     <!-- login js-->
 </body>
 </html>
