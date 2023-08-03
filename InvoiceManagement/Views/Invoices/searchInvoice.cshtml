@@ -1,0 +1,115 @@
+﻿@{
+    Layout = null;
+}
+
+@*Prueba de otra tabla*@
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header pb-0">
+            <h4>Invoice List</h4>
+            <span>Here you can find a list of all Invoices, Fully Paid, Pending and the ones that need revision.</span>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive theme-scrollbar">
+                <div id="basic-6_wrapper" class="dataTables_wrapper">
+                    <div class="dataTables_length" id="basic-6_length"><label>Show <select name="basic-6_length" aria-controls="basic-6" class=""><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div><div id="basic-6_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="basic-6" data-bs-original-title="" title=""></label></div><table class="display dataTable" id="basic-6" role="grid" aria-describedby="basic-6_info" style="width: 1513px;">
+                        <thead>
+                            <tr role="row">
+                                <th scope="col">Id</th>
+                                <th scope="col">Supplier</th>
+                                <th scope="col">Folio</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Remaining</th>
+                                <th class="sorting" tabindex="0" aria-controls="basic-6" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 87px;">Status</th>
+                                <th class="sorting" tabindex="0" aria-controls="basic-6" rowspan="1" colspan="1" aria-label="CV: activate to sort column ascending" style="width: 44px;">CV</th>
+                                <th class="sorting" tabindex="0" aria-controls="basic-6" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 84px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Deste</td>
+                                <td>D-1900</td>
+                                <td>$1000</td>
+                                <td>$900</td>
+                                <td><span class="badge badge-light-danger">Revision</span></td>
+                                <td class="action"><a class="pdf" href="../assets/pdf/sample.pdf" target="_blank" data-bs-original-title="" title=""><i class="icofont icofont-file-pdf"> </i></a></td>
+                                <td>
+                                    <ul class="action">
+                                        <li class="edit"> <a href="#" data-bs-original-title="" title=""><i class="icon-pencil-alt"></i></a></li>
+                                        <li class="delete"><a href="#" data-bs-original-title="" title=""><i class="icon-trash"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Desta</td>
+                                <td>C-1023</td>
+                                <td>$1200</td>
+                                <td>$100</td>
+                                <td><span class="badge badge-light-primary">Pending</span></td>
+                                <td class="action"><a class="pdf" href="../assets/pdf/sample.pdf" target="_blank" data-bs-original-title="" title=""><i class="icofont icofont-file-pdf"> </i></a></td>
+                                <td>
+                                    <ul class="action">
+                                        <li class="edit"> <a href="#" data-bs-original-title="" title=""><i class="icon-pencil-alt"></i></a></li>
+                                        <li class="delete"><a href="#" data-bs-original-title="" title=""><i class="icon-trash"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Dese</td>
+                                <td>D-1342</td>
+                                <td>$1500</td>
+                                <td>$1000</td>
+                                <td><span class="badge badge-light-danger">Revision</span></td>
+                                <td class="action"><a class="pdf" href="../assets/pdf/sample.pdf" target="_blank" data-bs-original-title="" title=""><i class="icofont icofont-file-pdf"> </i></a></td>
+                                <td>
+                                    <ul class="action">
+                                        <li class="edit"> <a href="#" data-bs-original-title="" title=""><i class="icon-pencil-alt"></i></a></li>
+                                        <li class="delete"><a href="#" data-bs-original-title="" title=""><i class="icon-trash"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">4</th>
+                                <td>Desa</td>
+                                <td>L-2341</td>
+                                <td>$2000</td>
+                                <td>$0</td>
+                                <td><span class="badge badge-light-success">Completed</span></td>
+                                <td class="action"><a class="pdf" href="../assets/pdf/sample.pdf" target="_blank" data-bs-original-title="" title=""><i class="icofont icofont-file-pdf"> </i></a></td>
+                                <td>
+                                    <ul class="action">
+                                        <li class="edit"> <a href="#" data-bs-original-title="" title=""><i class="icon-pencil-alt"></i></a></li>
+                                        <li class="delete"><a href="#" data-bs-original-title="" title=""><i class="icon-trash"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">5</th>
+                                <td>Elle</td>
+                                <td>A-1231</td>
+                                <td>$100</td>
+                                <td>$10</td>
+                                <td><span class="badge badge-light-primary">Pending</span></td>
+                                <td class="action"><a class="pdf" href="../assets/pdf/sample.pdf" target="_blank" data-bs-original-title="" title=""><i class="icofont icofont-file-pdf"> </i></a></td>
+                                <td>
+                                    <ul class="action">
+                                        <li class="edit"> <a href="#" data-bs-original-title="" title=""><i class="icon-pencil-alt"></i></a></li>
+                                        <li class="delete"><a href="#" data-bs-original-title="" title=""><i class="icon-trash"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table><div class="dataTables_info" id="basic-6_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                    <div class="dataTables_paginate paging_simple_numbers" id="basic-6_paginate">
+                        <a class="paginate_button previous disabled" aria-controls="basic-6" data-dt-idx="0" tabindex="0" id="basic-6_previous" data-bs-original-title="" title="">Previous</a>
+                        <span><a class="paginate_button current" aria-controls="basic-6" data-dt-idx="1" tabindex="0" data-bs-original-title="" title="">1</a><a class="paginate_button " aria-controls="basic-6" data-dt-idx="2" tabindex="0" data-bs-original-title="" title="">2</a><a class="paginate_button " aria-controls="basic-6" data-dt-idx="3" tabindex="0" data-bs-original-title="" title="">3</a><a class="paginate_button " aria-controls="basic-6" data-dt-idx="4" tabindex="0" data-bs-original-title="" title="">4</a><a class="paginate_button " aria-controls="basic-6" data-dt-idx="5" tabindex="0" data-bs-original-title="" title="">5</a><a class="paginate_button " aria-controls="basic-6" data-dt-idx="6" tabindex="0" data-bs-original-title="" title="">6</a></span>
+                        <a class="paginate_button next" aria-controls="basic-6" data-dt-idx="7" tabindex="0" id="basic-6_next" data-bs-original-title="" title="">Next</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

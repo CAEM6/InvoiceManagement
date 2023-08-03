@@ -1,0 +1,155 @@
+﻿@model IEnumerable<InvoiceManagement.Models.Invoice>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Folio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumTrans)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrdenCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Moneda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetodoPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Iva)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IvaPorcentaje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IvaRetenido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IvaTrasladado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsrRetenido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pagado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UltimoPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Balance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Supplier.RFC)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Folio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumTrans)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrdenCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Moneda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetodoPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Iva)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IvaPorcentaje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IvaRetenido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IvaTrasladado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsrRetenido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pagado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UltimoPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Balance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Account.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supplier.RFC)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
