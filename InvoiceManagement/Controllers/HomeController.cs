@@ -26,5 +26,31 @@ namespace InvoiceManagement.Controllers
 
             return View();
         }
+
+        public ActionResult newInvoice() {
+            ViewBag.Message = "Nueva Factura";
+            return View();
+        }
+        public ActionResult reports()
+        {
+            ViewBag.Message = "Reportefefes";
+            return View();
+        }
+        public ActionResult suppliers()
+        {
+            ViewBag.Message = "Proveedores";
+            return View();
+        }
+        public ActionResult accounts()
+        {
+            ViewBag.Message = "Cuentas";
+            return View();
+        }
+
+        public ActionResult searchInvoice()
+        {
+            ViewBag.Message = "Facturas";
+            return View();
+        }
     }
 }
