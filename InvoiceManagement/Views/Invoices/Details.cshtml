@@ -1,0 +1,186 @@
+﻿@model InvoiceManagement.Models.Invoice
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Invoice</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Folio)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Folio)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NumTrans)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NumTrans)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OrdenCompra)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrdenCompra)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Moneda)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Moneda)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TipoPago)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TipoPago)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MetodoPago)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MetodoPago)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Fecha)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Iva)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Iva)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IvaPorcentaje)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IvaPorcentaje)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IvaRetenido)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IvaRetenido)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IvaTrasladado)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IvaTrasladado)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Total)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Total)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsrRetenido)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsrRetenido)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SubTotal)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SubTotal)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Pagado)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Pagado)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UltimoPago)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UltimoPago)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Balance)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Balance)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Notas)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Notas)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Account.Codigo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Account.Codigo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Supplier.RFC)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Supplier.RFC)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

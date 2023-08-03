@@ -1,4 +1,6 @@
-﻿
+﻿@{
+    Layout = null;
+}
 <body>
     @*Prueba de componentes*@
     <div class="container-fluid">
@@ -59,39 +61,39 @@
 
                                 </div>
                                 <div class="mb-3 col-sm-6">
-                                    <input class="btn btn-primary" id="btnCalcular" type="button" value="Calcular"/>
-                                    <input class="btn btn-primary" id="btnImprimir" type="button" value="Imprimir"/>                                  
+                                    <input class="btn btn-primary" id="btnCalcular" type="button" value="Calcular" />
+                                    <input class="btn btn-primary" id="btnImprimir" type="button" value="Imprimir" />
                                 </div>
                             </div>
                             @*<div class="mb-3">
-            <label for="inputState">Country</label>
-            <select class="form-control" id="inputState">
-                <option selected="">Choose...</option>
-                <option>...</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="inputAddress5">Address</label>
-            <input class="form-control" id="inputAddress5" type="text">
-        </div>
-        <div class="mb-3">
-            <label for="inputCity">Town/City</label>
-            <input class="form-control" id="inputCity" type="text">
-        </div>
-        <div class="mb-3">
-            <label for="inputAddress2">State/Country</label>
-            <input class="form-control" id="inputAddress2" type="text">
-        </div>
-        <div class="mb-3">
-            <label for="inputAddress6">Postal Code</label>
-            <input class="form-control" id="inputAddress6" type="number">
-        </div>
-        <div class="mb-3">
-            <div class="form-check">
-                <input class="form-check-input" id="gridCheck" type="checkbox">
-                <label class="form-check-label" for="gridCheck">Check me out</label>
-            </div>
-        </div>*@
+                                    <label for="inputState">Country</label>
+                                    <select class="form-control" id="inputState">
+                                        <option selected="">Choose...</option>
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputAddress5">Address</label>
+                                    <input class="form-control" id="inputAddress5" type="text">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputCity">Town/City</label>
+                                    <input class="form-control" id="inputCity" type="text">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputAddress2">State/Country</label>
+                                    <input class="form-control" id="inputAddress2" type="text">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputAddress6">Postal Code</label>
+                                    <input class="form-control" id="inputAddress6" type="number">
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" id="gridCheck" type="checkbox">
+                                        <label class="form-check-label" for="gridCheck">Check me out</label>
+                                    </div>
+                                </div>*@
                         </form>
                     </div>
                     <div class="col-lg-6 col-sm-12">
@@ -108,7 +110,7 @@
                                 </ul>
                                 <ul class="sub-total">
                                     <li>Subtotal <span class="count">$111</span></li>
-                                    
+
                                     <li class="shipping-class">
                                         Shipping
                                         <div class="shopping-checkout-option">
@@ -149,11 +151,11 @@
     </div>
 </body>
 
- @{ 
-     double subtotal() {
-         double a, b;
-         a = Convert.ToDouble(Request.Form["inputOrdenCompra"]);
-         b = Convert.ToDouble(Request.Form["inputIVA"]);
-         return  a + (a * (b / 100));
-     }
- }}
+@*@{
+        double subtotal() {
+            double a, b;
+            a = Convert.ToDouble(Request.Form["inputOrdenCompra"]);
+            b = Convert.ToDouble(Request.Form["inputIVA"]);
+            return  a + (a * (b / 100));
+        }
+    }}*@
