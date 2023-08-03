@@ -33,7 +33,7 @@ namespace InvoiceManagement.Controllers
         }
         public ActionResult reports()
         {
-            ViewBag.Message = "Reportes";
+            ViewBag.Message = "Reportefefes";
             return View();
         }
         public ActionResult suppliers()
